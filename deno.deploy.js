@@ -31,5 +31,13 @@ serve(async (req) => {
   const res = await serveDir(req, {
     fsRoot: './html'
   });
+  if (res.status === 404) {
+    originURL.host = 'blog.cufoon.com';
+    const headers = {
+      headers: new Headers([['Location', originURL.href]])
+    };
+    setHeaders(headers);
+    return new Response(null, { headers: headers.headers, status: 301 });
+  }
   return setHeaders(res);
 });
