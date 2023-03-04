@@ -32,7 +32,7 @@ serve(async (req) => {
     fsRoot: './html'
   });
   if (res.status === 404) {
-    originURL.host = 'blog.cufoon.com';
+    originURL.host = 'notes.cufoon.com';
     const headers = {
       headers: new Headers([['Location', originURL.href]])
     };
